@@ -42,7 +42,7 @@
   <label for="company">Company: </label>
   <input id="company" type="text" formControlName="company" />
 
-  <button type="submit">Submit</button>
+  <button type="submit" [disabled]="isFormInvalid()">Submit</button>
 </form>
 
 <p>

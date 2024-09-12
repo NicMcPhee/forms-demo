@@ -27,4 +27,12 @@ export class FormDemoComponent {
   submit_complex_form() {
     this.form_not_submitted = false;
   }
+
+  isFormInvalid() {
+    return (
+      this.complex_form.get('first_name')?.value?.length == 0 ||
+      this.complex_form.get('last_name')?.value?.length == 0 ||
+      this.complex_form.get('company')?.value?.length == 0
+    );
+  }
 }
