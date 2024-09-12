@@ -1,0 +1,56 @@
+<h1>Form demo</h1>
+
+<h2>Just display (no editing)</h2>
+
+<p>This form can display some fixed text, but can't edit it.</p>
+
+<label for="display-only">Displayed value: </label>
+<input
+  id="display-only"
+  type="text"
+  [formControl]="text_display_form"
+  readonly
+/>
+
+<p>If you click the button below, however, the displayed text will change.</p>
+
+<button (click)="update_text_display_form()">Change text</button>
+
+<h2>A form you can edit</h2>
+
+<p>This form can be edited, and its value should be displayed below:</p>
+<blockquote>
+  <p><strong>Current value:</strong> {{ text_editable_form.value }}</p>
+</blockquote>
+
+<label for="editable">Editable value: </label>
+<input id="editable" type="text" [formControl]="text_editable_form" />
+
+<h2>A complex, multi-part form</h2>
+
+<p>This form has multiple parts, and can be edited as a whole.</p>
+
+<form [formGroup]="complex_form"
+  (ngSubmit)="submit_complex_form()">
+
+  <label for="first-name">First name: </label>
+  <input id="first-name" type="text" formControlName="first_name" />
+
+  <label for="last-name">Last name: </label>
+  <input id="last-name" type="text" formControlName="last_name" />
+
+  <label for="company">Company: </label>
+  <input id="company" type="text" formControlName="company" />
+
+  <button type="submit">Submit</button>
+</form>
+
+<p>
+  You've entered {{ complex_form.get("first_name")?.value }}
+  {{ complex_form.get("last_name")?.value }} from
+  {{ complex_form.get("company")?.value }}.
+</p>
+
+<p>
+  You have @if(form_not_submitted) { NOT } submitted the form.
+</p>
